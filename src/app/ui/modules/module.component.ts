@@ -46,8 +46,9 @@ export class ModuleComponent implements OnInit {
 
 
   constructor(public service: ModuleService,
-              public dialog: MatDialog,
+              public dialogC: MatDialog,
               public dialogD: MatDialog,
+              public dialogU: MatDialog,
               public snackBar: MatSnackBar,
               public route: ActivatedRoute,
               public menu: MenuComponent) {
@@ -70,11 +71,34 @@ export class ModuleComponent implements OnInit {
   }
 
   openDialogCreate(event) {
-    const dialogRef = this.dialog.open(OpenDialogToCreateModuleComponent, {
+    const dialogRef = this.dialogC.open(OpenDialogToCreateModuleComponent, {
       width: '600px',
       data: {}
     });
     dialogRef.afterClosed().subscribe(result => {
+      this.type = result.type;
+      this.name = result.name;
+      if (this.name == null) {
+        this.snackBar.open('Модуль не может быть создан без имени', 'ERROR', {
+          duration: 2000,
+        });
+      } else if (this.type == null) {
+        this.snackBar.open('Модуль не может быть создан без типа', 'ERROR', {
+          duration: 2000,
+        });
+      }
+      this.moduleF = new FurnitureModule(this.id, this.name, this.type, this.order_id);
+      this.save(this.moduleF);
+    });
+  }
+
+  openDilogUpdateModule(element:FurnitureModule){
+    const dialogRef = this.dialogU.open(OpenDialogToCreateModuleComponent, {
+      width: '600px',
+      data: {id: element.id, name: element.name, type: element.moduleType}
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.id = result.id;
       this.type = result.type;
       this.name = result.name;
       if (this.name == null) {

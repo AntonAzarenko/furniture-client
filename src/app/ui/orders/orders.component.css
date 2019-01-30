@@ -1,7 +1,14 @@
-
 .container {
-  min-height: calc(100vh - 153px);
+  height: 100%;
+  min-height: 87vh;
   background: rgba(255,255,255,0.6)
+}
+
+.head{
+  text-align: center;
+  font-size: 32px;
+  color: #bf0600;
+  padding-top: 20px;
 }
 
 .listO {
@@ -62,4 +69,19 @@ button {
   align-content: center;
   background-color: rgba(117, 255, 112, 0.22);
 
+}
+
+.example-h2 {
+  margin: 10px;
+}
+
+.example-section {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  height: 60px;
+}
+
+.example-margin {
+  margin: 0 10px;
 }

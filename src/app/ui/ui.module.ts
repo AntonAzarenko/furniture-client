@@ -63,6 +63,8 @@ import {OpenDialogCreateOrderComponentComponent} from './orders/open-dialog-crea
 import {RegisterComponent} from './register/register.component';
 import {LogoutComponent} from './logout/logout.component';
 import { AboutComponent } from './about/about.component';
+import { OpenDialogUpdateComponent } from './orders/open-dialog-update/open-dialog-update.component';
+import { OpenDialogUpdateModuleComponent } from './modules/open-dialog-update-module/open-dialog-update-module.component';
 
 
 @NgModule({
@@ -85,6 +87,8 @@ import { AboutComponent } from './about/about.component';
     RegisterComponent,
     LogoutComponent,
     AboutComponent,
+    OpenDialogUpdateComponent,
+    OpenDialogUpdateModuleComponent,
 
   ],
 
@@ -134,7 +138,8 @@ import { AboutComponent } from './about/about.component';
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
-    MatTreeModule
+    MatTreeModule,
+    BrowserAnimationsModule
 
   ],
   entryComponents: [
@@ -142,6 +147,7 @@ import { AboutComponent } from './about/about.component';
     OpenDialogToDeleteModuleComponent,
     DetailCreateDialogComponent,
     OpenDialogCreateOrderComponentComponent,
+    OpenDialogUpdateComponent
 
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],

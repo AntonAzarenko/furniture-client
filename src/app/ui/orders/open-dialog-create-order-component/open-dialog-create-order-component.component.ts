@@ -1,6 +1,13 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material";
-import {DialogCreateData} from "../orders.component";
+
+
+export interface DialogCreateData {
+  name:string;
+  customersName:string;
+  telNumber:string;
+  address:string;
+}
 
 @Component({
   selector: 'app-open-dialog-create-order-component',

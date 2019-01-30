@@ -1,5 +1,8 @@
 <div class="cont">
   <div class="container">
+    <div class="head">
+      <h7>Заказы</h7>
+    </div>
     <div class="butt">
       <div class="but">
         <button mat-icon-button (click)="openDialogCreateOrder()">
@@ -7,8 +10,11 @@
         </button>
       </div>
     </div>
+
     <div class="mat-elevation-z8">
+
       <table mat-table [dataSource]="dataSource" multiTemplateDataRows class="mat-elevation-z8">
+
 
         <ng-container matColumnDef="expandedDetail">
           <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
@@ -18,8 +24,8 @@
                 <div class="button-pos row">
                   <button mat-raised-button color="primary" class="btn btn-success" routerLink="order/{{element.name}}/modules/{{element.id}}">Модули</button>
                   <button mat-raised-button color="primary" class="btn btn-success disabled">Подписать</button>
-                  <button mat-raised-button color="primary" class="btn btn-success" routerLink="/order-calculation/{{element.id}}">Расчитать</button>
-                  <button mat-raised-button color="primary" class="btn btn-success disabled" >Редактировать</button>
+                  <button mat-raised-button color="primary" class="btn btn-success" routerLink="/order-calculation/{{element.id}}">Рассчитать</button>
+                  <button mat-raised-button color="primary" class="btn btn-success" (click)="openDialogUpdateOrder(element)" >Редактировать</button>
                 </div>
               </div>
               <div class="example-element-description">

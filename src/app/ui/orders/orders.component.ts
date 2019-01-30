@@ -6,13 +6,7 @@ import {animate, state, style, transition, trigger} from "@angular/animations";
 import {OpenDialogCreateOrderComponentComponent} from "./open-dialog-create-order-component/open-dialog-create-order-component.component";
 import {TokenStorageService} from "../../auth/token-storage.service";
 import {OrderEx} from "../../entity/OrderEx";
-
-export interface DialogCreateData {
-  name:string;
-  customersName:string;
-  telNumber:string;
-  address:string;
-}
+import {OpenDialogUpdateComponent} from "./open-dialog-update/open-dialog-update.component";
 
 @Component({
   selector: 'app-orders',
@@ -41,13 +35,13 @@ export class OrdersComponent implements OnInit {
   dateOfContract: string;
   dateOfCreate: string;
 
-
   displayedColumns: string [] = ['name', 'address', 'telNumber', 'customersName', 'dateOfCreate', 'dateOfContract'];
 
 
   constructor(private service: OrderService, private route: ActivatedRoute,
-              public dialog: MatDialog,
-              private tokenStorage: TokenStorageService) {
+              public dialogC: MatDialog,
+              public dialogU: MatDialog,
+              private tokenStorage: TokenStorageService,) {
   }
 
   ngOnInit() {
@@ -64,9 +58,29 @@ export class OrdersComponent implements OnInit {
   }
 
   openDialogCreateOrder() {
-    const dialogRef = this.dialog.open(OpenDialogCreateOrderComponentComponent, {
+    const dialogRef = this.dialogC.open(OpenDialogCreateOrderComponentComponent, {
       width: '600px',
-      data: {}
+      data: {
+      }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.id = result.id;
+      this.name = result.name;
+      this.customersName = result.customersName;
+      this.address = result.address;
+      this.telNumber = result.telNumber;
+      this.orderEx = this.createOrder();
+      this.save(this.orderEx);
+    });
+  }
+
+  openDialogUpdateOrder(element:OrderEx) {
+    const dialogRef = this.dialogU.open(OpenDialogUpdateComponent, {
+      width: '600px',
+      data: {
+        id: element.id, name: element.name, customersName: element.customersName,
+        telNumber: element.telNumber, address: element.address
+      }
     });
     dialogRef.afterClosed().subscribe(result => {
       this.id = result.id;

@@ -105,6 +105,8 @@ import {MenuComponent} from "./ui/menu/menu.component";
     MatTooltipModule,
     MatTreeModule,
     HttpModule,
+    MatProgressSpinnerModule,
+    BrowserAnimationsModule
   ],
 
   providers: [httpInterceptorProviders, MenuComponent],

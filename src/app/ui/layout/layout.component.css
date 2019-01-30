@@ -1,5 +1,5 @@
 .content {
-  min-height: calc(100vh);
+  min-height: 100vh;
   background: rgba(255,255,255,0.6);
   background: url('../../../img/workArea.jpg');
 }

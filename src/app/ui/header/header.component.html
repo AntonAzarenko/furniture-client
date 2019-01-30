@@ -16,8 +16,15 @@
       <li class="nav-item active">
         <a class="nav-link "  tabindex="-1">Фурнитура</a>
       </li>
+    </ul>
 
-
+    <ul *ngIf="authority" class="nav bg-dark justify-content-center">
+      <li class="nav-item">
+        <a class="nav-link active" routerLink="/orders">Заказы</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" routerLink="/order-calculation">Расчет</a>
+      </li>
     </ul>
 
     <ui class="navbar-nav  my-2 my-lg-0">
