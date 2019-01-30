@@ -1,8 +1,10 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {OrderEx} from "../entity/OrderEx";
 
-
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 
 
 @Injectable({
@@ -14,7 +16,7 @@ export class OrderService {
   }
 
   getAllByUserName(name: string) {
-    return this.http.get('https://back-end-furniture.herokuapp.com/'+ name);
+    return this.http.get('https://back-end-furniture.herokuapp.com/'+ name, httpOptions);
   }
 
   get(id: number) {
@@ -23,6 +25,6 @@ export class OrderService {
 
   save(order: OrderEx){
     console.log(order);
-    return this.http.post<OrderEx>('https://back-end-furniture.herokuapp.com/',  order);
+    return this.http.post<OrderEx>('https://back-end-furniture.herokuapp.com/',  order, httpOptions);
   }
 }
