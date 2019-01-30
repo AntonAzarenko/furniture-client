@@ -16,7 +16,7 @@ export class OrderService {
   }
 
   getAllByUserName(name: string) {
-    return this.http.get('https://back-end-furniture.herokuapp.com/order'+ name, httpOptions);
+    return this.http.get('https://back-end-furniture.herokuapp.com/order/'+ name, httpOptions);
   }
 
   get(id: number) {
