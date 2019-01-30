@@ -86,6 +86,7 @@ export class OrdersComponent implements OnInit {
 
   save(data) {
     this.service.save(data).subscribe(data => this.dataSource.push(data));
+    window.location.reload();
   }
 }
 

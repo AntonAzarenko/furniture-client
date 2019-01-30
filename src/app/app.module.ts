@@ -50,9 +50,7 @@ import {MenuComponent} from "./ui/menu/menu.component";
 
 @NgModule({
   declarations: [
-    AppComponent
-
-
+    AppComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
   imports: [

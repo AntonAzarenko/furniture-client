@@ -62,6 +62,7 @@ import {OrderCalculationComponent} from './order-calculation/order-calculation.c
 import {OpenDialogCreateOrderComponentComponent} from './orders/open-dialog-create-order-component/open-dialog-create-order-component.component';
 import {RegisterComponent} from './register/register.component';
 import {LogoutComponent} from './logout/logout.component';
+import { AboutComponent } from './about/about.component';
 
 
 @NgModule({
@@ -83,6 +84,7 @@ import {LogoutComponent} from './logout/logout.component';
     OpenDialogCreateOrderComponentComponent,
     RegisterComponent,
     LogoutComponent,
+    AboutComponent,
 
   ],
 

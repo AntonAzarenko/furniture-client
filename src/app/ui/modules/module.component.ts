@@ -103,7 +103,7 @@ export class ModuleComponent implements OnInit {
 
   save(data) {
     this.service.save(data).subscribe(data => this.modules.push(data));
-    //window.location.reload();
+    window.location.reload();
   }
 
   delete(id: number) {

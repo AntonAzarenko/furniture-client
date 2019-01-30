@@ -349,8 +349,6 @@ MIT
 
 @angular/material/icon
 
-@angular/material/progress-spinner
-
 @ng-bootstrap/ng-bootstrap
 MIT
 The MIT License (MIT)

@@ -19,7 +19,11 @@
 
 
     </ul>
+
     <ui class="navbar-nav  my-2 my-lg-0">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/about"  tabindex="-1">О программе</a>
+      </li>
       <li *ngIf="!authority" class="nav-item active">
         <a class="nav-link" routerLink="/greeting">войти</a>
       </li>

@@ -151,7 +151,7 @@ export class DetailsComponent implements OnInit {
       this.dataSource.push(data);
     });
     const id = +this.route.snapshot.paramMap.get('id');
-    //this.router.navigate(['/modules/'+ id + '/details'])
+    window.location.reload()
   }
 
   updateDetail(id: number) {

@@ -1,7 +1,7 @@
 <div class="cont">
   <div class="container">
     <div class="head">
-      <h7>Заказ</h7><h7>{{orderName}}</h7>
+      <h7>Расчет</h7><h7>{{orderName}}</h7>
     </div>
     <hr>
     <div class="mat-elevation-z8 table-container">
@@ -13,9 +13,9 @@
                  [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
               <div class="example-element-diagram">
                 <div class="button-pos row">
-                  <button mat-button routerLink="">Крой</button>
-                  <button mat-button routerLink="">Фурнитура</button>
-                  <button mat-button routerLink="">Фасады</button>
+                  <button mat-raised-button color="primary" class="btn btn-success disabled">Крой</button>
+                  <button mat-raised-button color="primary" class="btn btn-success disabled">Фурнитура</button>
+                  <button mat-raised-button color="primary" class="btn btn-success disabled">Фасады</button>
                 </div>
               </div>
               <div class="example-element-description">

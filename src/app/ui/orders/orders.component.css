@@ -1,6 +1,6 @@
 
 .container {
-  min-height: 87vh;
+  min-height: calc(100vh - 153px);
   background: rgba(255,255,255,0.6)
 }
 
@@ -22,7 +22,6 @@ tr.example-detail-row {
 }
 
 table {
-
   width: 100%;
 }
 
@@ -53,4 +52,14 @@ tr.example-element-row:not(.example-expanded-row):hover {
 
 tr.example-element-row:not(.example-expanded-row):active {
   background: #efefef;
+}
+button {
+  margin-bottom: 15px;
+  margin-left: 20px;
+  margin-right: 5px;
+}
+.example-element-diagram{
+  align-content: center;
+  background-color: rgba(117, 255, 112, 0.22);
+
 }
