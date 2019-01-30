@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {OrderEx} from "../entity/OrderEx";
+import {Prop} from "../entity/prop";
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -16,7 +17,7 @@ export class OrderService {
   }
 
   getAllByUserName(name: string) {
-    return this.http.get('https://back-end-furniture.herokuapp.com/furniture/order/'+ name);
+    return this.http.get(Prop.URI + name);
   }
 
   get(id: number) {

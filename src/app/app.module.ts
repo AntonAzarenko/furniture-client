@@ -110,4 +110,6 @@ import {MenuComponent} from "./ui/menu/menu.component";
   providers: [httpInterceptorProviders, MenuComponent],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  public URI = '';
+}
