@@ -16,15 +16,15 @@ export class OrderService {
   }
 
   getAllByUserName(name: string) {
-    return this.http.get('https://back-end-furniture.herokuapp.com/order/'+ name, httpOptions);
+    return this.http.get('https://back-end-furniture.herokuapp.com/furniture/order/'+ name);
   }
 
   get(id: number) {
-    return this.http.get('https://back-end-furniture.herokuapp.com/order' + id);
+    return this.http.get('https://back-end-furniture.herokuapp.com/furniture/order/' + id);
   }
 
   save(order: OrderEx){
     console.log(order);
-    return this.http.post<OrderEx>('https://back-end-furniture.herokuapp.com/order',  order, httpOptions);
+    return this.http.post<OrderEx>('https://back-end-furniture.herokuapp.com/furniture/order',  order, httpOptions);
   }
 }
