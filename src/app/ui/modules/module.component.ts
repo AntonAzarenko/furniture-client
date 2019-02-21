@@ -1,10 +1,14 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, Inject, OnInit, Input} from '@angular/core';
 import {ModuleService} from "../../services/module.service";
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef, MatSnackBar} from "@angular/material";
 import {ActivatedRoute} from "@angular/router";
 import {animate, state, style, transition, trigger} from "@angular/animations";
 import {MenuComponent} from "../menu/menu.component";
 import {FurnitureModule} from "../../entity/FurnitureModule";
+import {HelpOfOrderComponent} from "../../helps/help-of-order/help-of-order.component";
+import {HelpOfModuleComponent} from "../../helps/help-of-module/help-of-module.component";
+import { OrderStorageService } from 'src/app/services/order-storage.service';
+import { HeaderComponent } from '../header/header.component';
 
 export interface DialogCreateData {
   id: number;
@@ -20,6 +24,7 @@ export interface DialogDeleteData {
 }
 
 @Component({
+  providers:[HeaderComponent],
   selector: 'app-module',
   templateUrl: './module.component.html',
   styleUrls: ['./module.component.css'],
@@ -40,6 +45,10 @@ export class ModuleComponent implements OnInit {
   private order_id: number;
   private moduleId: number;
   dataSource: Object[];
+  public orderName: string;
+
+
+  public searchTextM: string;
 
 
   displayedColumns: string [] = ['name', 'moduleType'];
@@ -49,9 +58,12 @@ export class ModuleComponent implements OnInit {
               public dialogC: MatDialog,
               public dialogD: MatDialog,
               public dialogU: MatDialog,
+              public dialogH: MatDialog,
               public snackBar: MatSnackBar,
               public route: ActivatedRoute,
-              public menu: MenuComponent) {
+              public menu: MenuComponent,
+              public orderStorage: OrderStorageService,
+              public header:HeaderComponent) {
   }
 
   ngOnInit() {
@@ -60,15 +72,32 @@ export class ModuleComponent implements OnInit {
   }
 
   getAllModules() {
-    const id = +this.route.snapshot.paramMap.get('id');
+    this.setRouting();
+    const id = this.route.snapshot.params['id'];
     this.order_id = id;
     this.service.getAll(id).subscribe(
       (data: any[]) => {
         this.modules = (data);
-        this.dataSource = (data)
+        this.dataSource = (data);
+        if(data.length == 0){
+          this.openHelpDilog();
+        }
       }
     )
   }
+
+  setRouting(){
+    const id = this.route.snapshot.params['id'];
+    const name = this.route.snapshot.params['name'];
+    this.orderName = name;
+    if(id != this.orderStorage.getOrderId()){
+      window.location.reload()
+    }
+    this.orderStorage.saveOrderId(String(id));
+    this.orderStorage.saveOrderName(String(name));
+    this.header.setOptions();
+  }
+
 
   openDialogCreate(event) {
     const dialogRef = this.dialogC.open(OpenDialogToCreateModuleComponent, {
@@ -125,9 +154,24 @@ export class ModuleComponent implements OnInit {
     })
   }
 
+  openHelpDilog(){
+    const dialogRef = this.dialogH.open(HelpOfModuleComponent, {
+      width: '600px',
+    });
+    dialogRef.afterClosed().subscribe(result => {
+
+    });
+  }
+
   save(data) {
-    this.service.save(data).subscribe(data => this.modules.push(data));
-    window.location.reload();
+    this.service.save(data).subscribe(data => {
+      this.modules.push(data);
+      this.searchTextM = data.toString();
+      setTimeout(()=>{
+        this.searchTextM = "";
+      },2000)
+    });
+
   }
 
   delete(id: number) {
@@ -139,7 +183,10 @@ export class ModuleComponent implements OnInit {
       }
     });
     this.modules.splice(moduleId, 1);
-    window.location.reload();
+    this.searchTextM = "remove...";
+    setTimeout(()=>{
+      this.searchTextM = "";
+    },2000)
   }
 }
 

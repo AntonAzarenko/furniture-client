@@ -1,0 +1,37 @@
+<mat-card class="container">
+  <div class="row">
+    <div class="col col-sm-2 order-sm-2 bg-aqua cont">
+      <div>
+        <table border="1" width="250px" heigth="500px" bgcolor="#f0f8ff">
+          <span class="titleOfOrders">Заказы: - {{orders.length}}</span>
+          <ui *ngFor="let order of orders">
+            <button mat-menu-item routerLink="/orders">
+              <mat-icon>home</mat-icon>
+              <span routerLink="/orders/order/{{order.name}}/modules/{{order.id}}">{{order.name}}</span>
+            </button>
+          </ui>
+        </table>
+      </div>
+    </div>
+    <div class="col-sm-9 col cont">
+      <hr>
+      <h4>Личные данные:</h4>
+      <div class="cont">
+        <label>Email: </label><span> {{email}}</span>
+      </div>
+      <div class="cont">
+        <label>Пароль:</label>
+        <button mat-menu-item>Сменить пароль</button>
+        <hr>
+      </div>
+      <div class="cont">
+        <h4>Дизайнеры:</h4>
+        <div class="cont">
+          <label>Пароль:</label>
+        </div>
+        <button mat-menu-item>Добавить дизайнера</button>
+        <hr>
+      </div>
+    </div>
+  </div>
+</mat-card>

@@ -1,9 +1,9 @@
 <div class="container">
   <div class="two col-sm-4">
     <mat-card *ngIf="isSignedUp; else signupForm">
-      Вы успешно зарегистрированы!
+      Вы успешно зарегистрированы!Пожалуйста авторизуйтесь!
       <br>
-      <span><a color="primary" mat-raised-button routerLink="/orders">Ok</a></span>
+      <span><a color="primary" mat-raised-button routerLink="/greeting">Ok</a></span>
     </mat-card>
     <div class="two">
       <ng-template #signupForm>

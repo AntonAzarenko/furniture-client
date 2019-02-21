@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AuthLoginInfo} from "../../auth/login-info";
 import {AuthService} from "../../auth/auth.service";
 import {TokenStorageService} from "../../auth/token-storage.service";
-import {ActivatedRoute,Router} from "@angular/router";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-greeting',
@@ -20,7 +20,8 @@ export class GreetingComponent implements OnInit {
 
   constructor(private authService: AuthService,
               private tokenStorage: TokenStorageService,
-              private router: Router) { }
+              private router: Router) {
+  }
 
   ngOnInit() {
     if (this.tokenStorage.getToken()) {
@@ -45,8 +46,8 @@ export class GreetingComponent implements OnInit {
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getAuthorities();
-        this.reloadPage();
         this.router.navigate(['/orders']);
+        this.reloadPage();
       },
       error => {
         console.log(error);

@@ -1,6 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Details} from "../entity/Details";
+import {environment} from "../../environments/environment";
+import {Observable} from "rxjs/index";
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -14,33 +16,36 @@ const httpOptions = {
 })
 export class DetailService {
 
+  private getAllUrl = environment.URI + '/furniture/detail';
+
+  private getByModuleIDUrl = environment.URI + '/furniture/detail/';
+
+  private deleteUrl = environment.URI + '/furniture/detail/';
+
+  private saveUrl = environment.URI + '/furniture/detail';
+
   constructor(private http: HttpClient) {
   }
 
   getAllDetail() {
-    return this.http.get('https://back-end-furniture.herokuapp.com/furniture/detail');
+    return this.http.get(this.getAllUrl);
   }
 
-  getDetailsByModuleId(id: number) {
-    return this.http.get('https://back-end-furniture.herokuapp.com/furniture/detail/' + id);
+  getDetailsByModuleId(id: number)  {
+    return this.http.get(this.getByModuleIDUrl + id);
   }
 
   deleteDetail(id: number) {
-     console.log(id);
-    this.http.delete('https://back-end-furniture.herokuapp.com/furniture/detail/' + id).subscribe();
-  }
 
-  deleteAll(list: Details[]) {
-    console.log(list);
-
-    list.forEach(function (value, index, array) {
-
-    });
-     this.http.delete<Details>('https://back-end-furniture.herokuapp.com/furniture/detail/del/' + list).subscribe();
+    return this.http.delete(this.deleteUrl + id);
   }
 
   save(detail: Details) {
-    console.log(detail);
-    return this.http.post<Details>('https://back-end-furniture.herokuapp.com/furniture/detail', detail, httpOptions)
+
+    return this.http.post<Details>(this.saveUrl, detail, httpOptions)
+  }
+
+  getNameByModId(id: number){
+    return this.http.get(this.getAllUrl + "/name/" + id);
   }
 }

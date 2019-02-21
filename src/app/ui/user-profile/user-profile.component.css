@@ -1,0 +1,24 @@
+.container {
+  min-height: calc(100vh - 112px);
+}
+
+.table {
+  background-color: #e8e8e8;
+}
+
+.titleOfOrders {
+  font-size: 28px;
+  font-family: Monotype Corsiva;
+  padding-left: 50px;
+}
+
+.linksOfOrder {
+  font-size: 8px;
+  font-family: Times New Roman;
+  padding-left: 10px;
+  text-decoration: none;
+}
+
+.cont {
+  font-size: 12px;
+}

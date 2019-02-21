@@ -7,6 +7,7 @@ import {OpenDialogCreateOrderComponentComponent} from "./open-dialog-create-orde
 import {TokenStorageService} from "../../auth/token-storage.service";
 import {OrderEx} from "../../entity/OrderEx";
 import {OpenDialogUpdateComponent} from "./open-dialog-update/open-dialog-update.component";
+import {HelpOfOrderComponent} from "../../helps/help-of-order/help-of-order.component";
 
 @Component({
   selector: 'app-orders',
@@ -26,6 +27,7 @@ export class OrdersComponent implements OnInit {
   dataSource: OrderEx[];
   userName: string;
   orderEx: OrderEx;
+  searchTextO: string;
 
   private id: number;
   private name: string;
@@ -41,6 +43,7 @@ export class OrdersComponent implements OnInit {
   constructor(private service: OrderService, private route: ActivatedRoute,
               public dialogC: MatDialog,
               public dialogU: MatDialog,
+              public dialogH: MatDialog,
               private tokenStorage: TokenStorageService,) {
   }
 
@@ -49,12 +52,24 @@ export class OrdersComponent implements OnInit {
     this.getAllOrders(this.userName);
   }
 
+  openHelpDilog(){
+    const dialogRef = this.dialogH.open(HelpOfOrderComponent, {
+      width: '600px',
+      data: {userName: this.userName}
+    });
+    dialogRef.afterClosed().subscribe(result => {
+
+    });
+  }
+
   getAllOrders(userName: string) {
     this.service.getAllByUserName(userName).subscribe(
       (data: any[]) => {
         this.dataSource = (data);
+        if(data.length == 0){
+          this.openHelpDilog();
+        }
       });
-    console.log(this.dataSource);
   }
 
   openDialogCreateOrder() {
@@ -99,8 +114,13 @@ export class OrdersComponent implements OnInit {
   }
 
   save(data) {
-    this.service.save(data).subscribe(data => this.dataSource.push(data));
-    window.location.reload();
+    this.service.save(data).subscribe((data:any) =>{
+       this.dataSource.push(data);
+      this.searchTextO = data;
+      setTimeout(()=>{
+        this.searchTextO = "";
+      },2000)
+    });
   }
 }
 

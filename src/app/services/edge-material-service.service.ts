@@ -1,14 +1,18 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class EdgeMaterialServiceService {
 
-  constructor(private http: HttpClient) { }
+  private getUrl = environment.URI + '/furniture/edge';
 
-  getAllEdge(){
-    return this.http.get('https://back-end-furniture.herokuapp.com/furniture/edge');
+  constructor(private http: HttpClient) {
+  }
+
+  getAllEdge() {
+    return this.http.get(this.getUrl);
   }
 }

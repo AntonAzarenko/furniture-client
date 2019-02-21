@@ -3,6 +3,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatPaginatorModule, MatSortModule, MatTableModule } from '@angular/material';
 
 import { DetailsComponent } from './details.component';
+import {describe, expect} from "@angular/core/testing/src/testing_internal";
 
 describe('DetailsComponent', () => {
   let component: DetailsComponent;

@@ -71,6 +71,11 @@ button {
 
 }
 
+.table-containers {
+  height: 400px;
+  overflow: auto;
+}
+
 .example-h2 {
   margin: 10px;
 }
@@ -84,4 +89,8 @@ button {
 
 .example-margin {
   margin: 0 10px;
+}
+.message {
+  padding-top: 50px;
+  padding-left: 50px;
 }

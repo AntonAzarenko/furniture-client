@@ -65,6 +65,11 @@ import {LogoutComponent} from './logout/logout.component';
 import { AboutComponent } from './about/about.component';
 import { OpenDialogUpdateComponent } from './orders/open-dialog-update/open-dialog-update.component';
 import { OpenDialogUpdateModuleComponent } from './modules/open-dialog-update-module/open-dialog-update-module.component';
+import {GrdFilterPipe} from "./details/grd-filter.pipe";
+import { HelpOfOrderComponent } from '../helps/help-of-order/help-of-order.component';
+import {GrdFilterPipeOrder} from "./orders/grd-filter.pipe.order";
+import {HelpOfModuleComponent} from "../helps/help-of-module/help-of-module.component";
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 
 @NgModule({
@@ -89,6 +94,10 @@ import { OpenDialogUpdateModuleComponent } from './modules/open-dialog-update-mo
     AboutComponent,
     OpenDialogUpdateComponent,
     OpenDialogUpdateModuleComponent,
+    GrdFilterPipe,
+    HelpOfOrderComponent,
+    GrdFilterPipeOrder,
+    UserProfileComponent
 
   ],
 
@@ -140,16 +149,17 @@ import { OpenDialogUpdateModuleComponent } from './modules/open-dialog-update-mo
     MatTooltipModule,
     MatTreeModule,
     BrowserAnimationsModule
-
   ],
   entryComponents: [
     OpenDialogToCreateModuleComponent,
     OpenDialogToDeleteModuleComponent,
     DetailCreateDialogComponent,
     OpenDialogCreateOrderComponentComponent,
-    OpenDialogUpdateComponent
-
+    OpenDialogUpdateComponent,
+    HelpOfOrderComponent,
+    HelpOfModuleComponent
   ],
+
   schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
 
   exports: [
@@ -164,6 +174,9 @@ import { OpenDialogUpdateModuleComponent } from './modules/open-dialog-update-mo
     OrdersComponent,
     OpenDialogCreateOrderComponentComponent,
     DetailCreateDialogComponent,
+    GrdFilterPipe,
+    GrdFilterPipeOrder,
+    UserProfileComponent
 
   ]
 })

@@ -8,29 +8,39 @@
   <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item active">
-        <a class="nav-link" >ДСП<span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" >Кромка</a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link "  tabindex="-1">Фурнитура</a>
+        <a class="nav-link">Каталог<span class="sr-only">(current)</span></a>
       </li>
     </ul>
 
-    <ul *ngIf="authority" class="nav bg-dark justify-content-center">
-      <li class="nav-item">
-        <a class="nav-link active" routerLink="/orders">Заказы</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" routerLink="/order-calculation">Расчет</a>
-      </li>
-    </ul>
+    <ui *ngIf="authority">
+      <button mat-icon-button style="color:white" [matMenuTriggerFor]="menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item routerLink="/orders">
+          <mat-icon>home</mat-icon>
+          <span>Заказы</span>
+        </button>
+        <button mat-menu-item routerLink="/orders/order/{{orderName}}/modules/{{orderId}}">
+          <mat-icon>view_comfy</mat-icon>
+          <span>Модули</span>
+        </button>
+        <button mat-menu-item routerLink="/order-calculation/{{orderId}}">
+          <mat-icon>keyboard</mat-icon>
+          <span>Просчет заказа</span>
+        </button>
+        <button mat-menu-item routerLink="user/profile">
+          <mat-icon>person</mat-icon>
+          <span>Личный кабинет</span>
+        </button>
+        <button mat-menu-item routerLink="/about">
+          <mat-icon>live_help</mat-icon>
+          <span>О программе</span>
+        </button>
+      </mat-menu>
+    </ui>
 
     <ui class="navbar-nav  my-2 my-lg-0">
-      <li class="nav-item active">
-        <a class="nav-link" routerLink="/about"  tabindex="-1">О программе</a>
-      </li>
       <li *ngIf="!authority" class="nav-item active">
         <a class="nav-link" routerLink="/greeting">войти</a>
       </li>

@@ -2,8 +2,21 @@ table {
   width: 100%;
 }
 
+.head {
+  text-align: center;
+  font-size: 32px;
+  color: #bf0600;
+  padding-top: 20px;
+}
+
+.infoAboutOrder{
+  font-size: 25px;
+  color: #000;
+  font: -apple-system-tall-body;
+}
+
 .form-inline {
-  margin-left: 200px;
+ #margin-left: 200px;
 }
 
 .cont {
@@ -62,6 +75,7 @@ tr.example-detail-row {
 }
 
 button {
+  margin-top: 10px;
   margin-bottom: 15px;
   margin-left: 20px;
   margin-right: 5px;

@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {SignUpInfo} from "../../auth/sign-up.info";
 import {AuthService} from "../../auth/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-register',
@@ -15,9 +16,12 @@ export class RegisterComponent implements OnInit {
   isSignUpFailed = false;
   errorMessage = '';
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService,
+              public router: Router) {
+  }
 
-  ngOnInit() { }
+  ngOnInit() {
+  }
 
   onSubmit() {
     console.log(this.form);
@@ -31,6 +35,7 @@ export class RegisterComponent implements OnInit {
         console.log(data);
         this.isSignedUp = true;
         this.isSignUpFailed = false;
+        this.router.navigate(['/greeteng'])
       },
       error => {
         console.log(error);

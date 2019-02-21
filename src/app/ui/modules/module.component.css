@@ -16,6 +16,12 @@
   padding-top: 20px;
 }
 
+.infoAboutOrder{
+  font-size: 25px;
+  color: #000;
+  font: -apple-system-tall-body;
+}
+
 .table-container {
   position: relative;
   max-height: 400px;

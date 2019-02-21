@@ -46,11 +46,15 @@ import {BrowserAnimationsModule, NoopAnimationsModule} from "@angular/platform-b
 import {Http, HttpModule} from "@angular/http";
 import {httpInterceptorProviders} from "./auth/auth-interceptor";
 import {MenuComponent} from "./ui/menu/menu.component";
+import {GrdFilterPipe} from "./ui/details/grd-filter.pipe";
+import {GrdFilterPipeOrder} from "./ui/orders/grd-filter.pipe.order";
+import { HelpOfModuleComponent } from './helps/help-of-module/help-of-module.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    HelpOfModuleComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
   imports: [
@@ -109,7 +113,7 @@ import {MenuComponent} from "./ui/menu/menu.component";
     BrowserAnimationsModule
   ],
 
-  providers: [httpInterceptorProviders, MenuComponent],
+  providers: [httpInterceptorProviders, MenuComponent,GrdFilterPipe,GrdFilterPipeOrder],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -3,18 +3,25 @@
     <div class="head">
       <h7>Заказы</h7>
     </div>
-    <div class="butt">
-      <div class="but">
+    <div class=" row">
+      <div class="but butt">
         <button mat-icon-button (click)="openDialogCreateOrder()">
           <mat-icon style="color: #bf0008">library_add</mat-icon>
         </button>
       </div>
+      <div class="col-sm-4">
+        <form class="form-inline mr-sm-2">
+          <input class="form-control  my-2 my-sm-0" [(ngModel)]="searchTextO" placeholder="Search..." name="Search">
+        </form>
+      </div>
     </div>
 
-    <div class="mat-elevation-z8">
 
-      <table mat-table [dataSource]="dataSource" multiTemplateDataRows class="mat-elevation-z8">
+    <div class="table-containers mat-elevation-z8">
 
+      <table mat-table  #table [dataSource]="dataSource | grdFilterOrder: {name: searchTextO, address: searchTextO, telNumber: searchTextO,
+        customersName: searchTextO, dateOfCreate: searchTextO, dateOfContract: searchTextO}" multiTemplateDataRows class="mat-elevation-z8"
+             matSort matSortActive="created" matSortDisableClear matSortDirection="asc">
 
         <ng-container matColumnDef="expandedDetail">
           <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
@@ -36,7 +43,7 @@
           </td>
         </ng-container>
 
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns;sticky: true"></tr>
         <tr mat-row *matRowDef="let element; columns: displayedColumns;"
             class="example-element-row"
             [class.example-expanded-row]="expandedElement === element"
@@ -45,7 +52,7 @@
         <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
         <!-- Position Column -->
         <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef> Имя</th>
+          <th mat-header-cell *matHeaderCellDef> Заказ</th>
           <td mat-cell *matCellDef="let element"> {{element.name}}</td>
         </ng-container>
 

@@ -1,7 +1,8 @@
 
 
 import { EdgeMaterialServiceService } from './edge-material-service.service';
-import {expect} from "@angular/core/testing/src/testing_internal";
+import {describe, expect} from "@angular/core/testing/src/testing_internal";
+import {TestBed} from "@angular/core/testing";
 
 describe('EdgeMaterialServiceService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));

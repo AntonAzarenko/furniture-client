@@ -1,7 +1,23 @@
-input {
+
+.form-group{
+
+  align-content: center;
   padding-left: 10px;
   padding-right: 10px;
-  margin-left: 10px;
-  margin-right: 10px;
-  margin-bottom: 20px;
+  width: 100%
+}
+
+.row{
+  align-content: center;
+  text-align: center;
+  margin: auto auto auto 50px ;
+}
+
+mat-card {
+
+  align-content: center;
+  padding-left: 50px;
+  padding-right: 50px;
+  #margin-left: 50px;
+
 }

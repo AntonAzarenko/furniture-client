@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Prop} from "../../entity/prop";
+import {Prop} from "../../properties";
 
 @Component({
   selector: 'app-footer',

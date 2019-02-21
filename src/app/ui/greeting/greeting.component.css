@@ -1,7 +1,8 @@
 .substrate {
   padding-top: 100px;
   min-height: calc(100vh - 112px);
-  background: url('../../../img/workArea.jpg');
+  background: url('../../../img/marta1.jpg');
+  width: 100%;
 }
 .but {
   font-weight: 100;

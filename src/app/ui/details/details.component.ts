@@ -1,12 +1,13 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {MatDialog, MatPaginator, MatSort} from '@angular/material';
+import {MatDialog, MatPaginator, MatSnackBar, MatSort} from '@angular/material';
 import {DetailService} from "../../services/detail.service";
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute} from "@angular/router";
 import {ColorService} from "../../services/colorservice.service";
 import {EdgeMaterialServiceService} from "../../services/edge-material-service.service";
 import {animate, state, style, transition, trigger} from "@angular/animations";
 import {DetailCreateDialogComponent} from "./detail-create-dialog/detail-create-dialog.component";
 import {Details} from "../../entity/Details";
+import {OrderStorageService} from "../../services/order-storage.service";
 
 
 @Component({
@@ -26,8 +27,10 @@ export class DetailsComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
   dataSource: Details[];
-  labelPositionY: string;
-  labelPositionX: string;
+
+  public searchText: string;
+  public moduleOfFur: Object;
+  public orderName: string;
 
   id: number;
   colors: Object[];
@@ -41,6 +44,7 @@ export class DetailsComponent implements OnInit {
   private thickness: string;
   private material: string;
   public colorId: number;
+  public color_Id: number;
   private edgeOnX: boolean;
   private edgeOnY: boolean;
   private edgeTypeY: string;
@@ -58,9 +62,9 @@ export class DetailsComponent implements OnInit {
               public edgeService: EdgeMaterialServiceService,
               private route: ActivatedRoute,
               public dialog: MatDialog,
-              private router: Router) {
+              public snackBar: MatSnackBar,
+              public orderStorage: OrderStorageService) {
   }
-
 
   displayedColumns: string[] = ['name', 'y', 'x', 'count', 'thickness', 'material', 'button'];
 
@@ -75,12 +79,13 @@ export class DetailsComponent implements OnInit {
         console.log(this.edgeMat)
       }
     );
-
+    this.orderName = this.orderStorage.getOrderName();
   }
 
   getDetByModID(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.moduleId = id;
+    this.getNameByModId();
     this.service.getDetailsByModuleId(id).subscribe(
       (data: any[]) => {
         this.dataSource = (data);
@@ -90,9 +95,17 @@ export class DetailsComponent implements OnInit {
     console.log(this.dataSource);
   }
 
-  delete(id: number) {
-    this.service.deleteDetail(id);
-    window.location.reload();
+  getNameByModId() {
+    this.service.getNameByModId(this.moduleId).subscribe(
+      (data: any) => {
+        this.moduleOfFur = data;
+        console.log(data)
+      });
+  }
+
+  delete(id: number): void {
+    this.service.deleteDetail(id).subscribe();
+    this.dataSource = this.dataSource.filter(item => item.id != id);
   }
 
   openDialogCreateDetail(event) {
@@ -108,7 +121,7 @@ export class DetailsComponent implements OnInit {
       this.count = result.count;
       this.setThickness(result.thickness);
       this.setMaterial(result.material);
-      this.setColor(result.colorId);
+      this.setColor();
       this.moduleId = +this.route.snapshot.paramMap.get('id');
       this.save(this.createDetail());
     });
@@ -138,20 +151,24 @@ export class DetailsComponent implements OnInit {
     }
   }
 
-  setColor(item: number): void {
-    if (item == null) {
+  setColor(): void {
+    if (this.colorId == null) {
       this.colorId = 1;
-    } else {
-      // this.colorId = item;
     }
   }
 
   save(data) {
     this.service.save(data).subscribe((data: any) => {
       this.dataSource.push(data);
+      this.searchText = "Adding...";
+      this.snackBar.open('Деталь успешно создана', 'Ok', {
+        duration: 2000,
+      });
+      setTimeout(() => {
+        this.searchText = "";
+      }, 2000)
     });
-    const id = +this.route.snapshot.paramMap.get('id');
-    window.location.reload()
+
   }
 
   updateDetail(id: number) {
@@ -163,8 +180,9 @@ export class DetailsComponent implements OnInit {
       }
     });
     detail = this.dataSource[indexOfDetail];
-    this.save(detail);
+    this.service.save(detail).subscribe();
+    this.searchText = '1';
+    this.searchText = "";
   }
-
 }
 

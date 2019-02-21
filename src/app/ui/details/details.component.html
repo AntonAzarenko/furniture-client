@@ -1,30 +1,42 @@
 <div class="cont">
   <div class="container">
+    <div class="infoAboutOrder">
+      <label>Заказ: {{orderName}}</label>
+      <div>
+        <label>Модуль: {{moduleOfFur.name}}</label>
+      </div>
+    </div>
 
+    <div class="head">
+      <h7>Деталировка</h7>
+    </div>
+    <hr>
     <div class="row">
+      <hr>
       <div class="col">
         <button mat-button (click)="openDialogCreateDetail($event)">
           <mat-icon style="color: #bf0008">library_add</mat-icon>
         </button>
       </div>
       <div class="col">
-        <form class="form-inline my-1 my-lg-2">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        <mat-form-field>
+          <mat-select placeholder="Цвет ДСП" [(ngModel)]="colorId">
+            <mat-option *ngFor="let color of colors" [value]="color.id">{{color.title}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+      </div>
+      <div class="col-sm-4">
+        <form class="form-inline">
+          <input class="form-control mr-sm-2" [(ngModel)]="searchText" placeholder="Search..." name="Search">
         </form>
       </div>
     </div>
-    <hr>
-    <div>
-      <mat-form-field>
-        <mat-select placeholder="Цвет ДСП"[{ngModel}]="colorId" [(value)]="colorId">
-          <mat-option *ngFor="let color of colors" [value]="color.id">{{color.title}}</mat-option>
-        </mat-select>
-      </mat-form-field>
-
-    </div>
     <div class="mat-elevation-z8">
-      <table mat-table [dataSource]="dataSource" multiTemplateDataRows class="mat-elevation-z8">
+      <!--multiTemplateDataRows-->
+      <table mat-table #table [dataSource]="dataSource  | grdFilter: {name: searchText, x: searchText, y: searchText,
+       count: searchText, thickness: searchText, material: searchText}" class="mat-elevation-z8" multiTemplateDataRows
+             matSort matSortActive="created" matSortDisableClear matSortDirection="asc">
         <ng-container matColumnDef="expandedDetail">
           <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
             <div class="example-element-detail element-checkboxes"
@@ -154,7 +166,9 @@
 
                   <div class="example-element-diagram">
                     <div class="button-pos row">
-                      <button mat-raised-button color="primary" class="btn btn-success" (click)="updateDetail(element.id)">Применить</button>
+                      <button mat-raised-button color="primary" class="btn btn-success"
+                              (click)="updateDetail(element.id)">Применить
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -218,17 +232,3 @@
 </div>
 
 
-<!--<ng-container matColumnDef="select">
-          <th mat-header-cell *matHeaderCellDef>
-            <mat-checkbox (change)="$event ? masterToggle() : null"
-                          [checked]="selection.hasValue() && isAllSelected()"
-                          [indeterminate]="selection.hasValue() && !isAllSelected()">
-            </mat-checkbox>
-          </th>
-          <td mat-cell *matCellDef="let row">
-            <mat-checkbox (click)="$event.stopPropagation()"
-                          (change)="$event ? selection.toggle(row) : null"
-                          [checked]="selection.isSelected(row)">
-            </mat-checkbox>
-          </td>
-        </ng-container>-->

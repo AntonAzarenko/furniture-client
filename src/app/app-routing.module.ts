@@ -9,6 +9,7 @@ import {OrderCalculationComponent} from "./ui/order-calculation/order-calculatio
 import {RegisterComponent} from "./ui/register/register.component";
 import {LogoutComponent} from "./ui/logout/logout.component";
 import {AboutComponent} from "./ui/about/about.component";
+import { UserProfileComponent } from './ui/user-profile/user-profile.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/greeting', pathMatch: 'full'},
@@ -23,7 +24,8 @@ const routes: Routes = [
   {path: 'signup', component: RegisterComponent },
   {path: 'login', component: GreetingComponent},
   {path: 'logout', component: LogoutComponent},
-  {path: 'about', component: AboutComponent}
+  {path: 'about', component: AboutComponent},
+  {path: 'user/profile', component: UserProfileComponent}
 
 ];
 
