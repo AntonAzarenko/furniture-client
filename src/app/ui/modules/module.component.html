@@ -32,10 +32,15 @@
             <div class="example-element-detail"
                  [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
               <div class="example-element-diagram">
-                <div class="button-pos row">
+                <div class="button-pos row" *ngIf="equals(element.moduleType)">
+                  <button mat-raised-button color="primary" class="btn btn-success"routerLink="/fitting/{{element.id}}">Добавить</button>
+                  <button mat-raised-button color="primary" class="btn btn-success disabled">Просчет</button>
+                  <button mat-raised-button color="primary" class="btn btn-success disabled"(click)="openDilogUpdateModule(element)">Редактировать</button>
+                </div>
+                <div class="button-pos row" *ngIf="!equals(element.moduleType)">
                   <button mat-raised-button color="primary" class="btn btn-success"routerLink="/modules/{{element.id}}/details">Крой</button>
                   <button mat-raised-button color="primary" class="btn btn-success disabled">Фурнитура</button>
-                  <button mat-raised-button color="primary" class="btn btn-success"(click)="openDilogUpdateModule(element)">Редактировать</button>
+                  <button mat-raised-button color="primary" class="btn btn-success "(click)="openDilogUpdateModule(element)">Редактировать</button>
                 </div>
               </div>
               <div class="example-element-description">

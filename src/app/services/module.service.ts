@@ -25,17 +25,14 @@ export class ModuleService {
   }
 
   getAll(id: number) {
-    console.log(id);
     return this.http.get(this.getUrl + id);
   }
 
   save(moduleF: FurnitureModule) {
-    console.log(moduleF);
     return this.http.post<FurnitureModule>(this.saveUrl, moduleF, httpOptions);
   }
 
   delete(id: number) {
-    console.log(id);
     this.http.delete(this.deleteUrl + id).subscribe();
   }
 }

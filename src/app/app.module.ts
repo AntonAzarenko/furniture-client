@@ -54,7 +54,8 @@ import { HelpOfModuleComponent } from './helps/help-of-module/help-of-module.com
 @NgModule({
   declarations: [
     AppComponent,
-    HelpOfModuleComponent
+    HelpOfModuleComponent,
+
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
   imports: [

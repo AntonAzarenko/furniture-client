@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="title">
+    <span>Добавьте параметры</span>
+  </div>
+  <div class="input-type">
+    <mat-form-field class="input-type">
+      <input matInput type="text" [(ngModel)]="article" placeholder="Введите артикль" value="article" name="article"
+             #username="ngModel" required="true"/>
+      <mat-error>Необходимо ввести артикль</mat-error>
+    </mat-form-field>
+  </div>
+  <div class="input-type">
+    <section class="section">
+      <mat-checkbox class="margin" [(ngModel)]="gold">Золото</mat-checkbox>
+      <mat-checkbox class="margin" [(ngModel)]="chrome_bright">Хром матовый</mat-checkbox>
+      <mat-checkbox class="margin" [(ngModel)]="chrome_matt">Хром яркий</mat-checkbox>
+      <mat-checkbox class="margin" [(ngModel)]="satin">Сaтин</mat-checkbox>
+      <mat-checkbox class="margin" [(ngModel)]="other">Другое</mat-checkbox>
+    </section>
+  </div>
+  <div class="input-type" *ngIf="other">
+    <mat-form-field class="input-type">
+      <input matInput type="text" [(ngModel)]="color" placeholder="Введите цвет" value="color" name="color"
+             #username="ngModel" required="true"/>
+      <mat-error>Необходимо ввести цвет</mat-error>
+    </mat-form-field>
+  </div>
+  <div class="input-type">
+    <section class="section">
+      <mat-checkbox class="margin" [(ngModel)]="nintysix">96</mat-checkbox>
+      <mat-checkbox class="margin" [(ngModel)]="oneHundredTwentyEight">128</mat-checkbox>
+      <mat-checkbox class="margin" [(ngModel)]="oneHundrednintyTwo">192</mat-checkbox>
+      <mat-checkbox class="margin" [(ngModel)]="twoHundredFivtySix">256</mat-checkbox>
+      <mat-checkbox class="margin" [(ngModel)]="otherCenter">Другое</mat-checkbox>
+    </section>
+  </div>
+  <div class="input-type" *ngIf="otherCenter">
+    <mat-form-field class="input-type">
+      <input matInput type="text" [(ngModel)]="betweenCenter" placeholder="Введите межосевой размер" value="color"
+             name="color"
+             #username="ngModel" required="true"/>
+      <mat-error>Необходимо ввести межосевой размер</mat-error>
+    </mat-form-field>
+  </div>
+  <div class="input-type2">
+    <input id="inputGroupFile01" style="display: none"
+           type="file" (change)="onChangeFile($event)" name="file"
+           #fileInput>
+    <div>
+      <button (click)="fileInput.click()">Select File</button>
+      <button mat-menu-item (click)="onSubmit()">Добавить ручку</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  $('#inputGroupFile01').on('change', function () {
+    var fileName = $(this).val();
+    $(this).next('.custom-file-label').html(fileName);
+  });
+</script>

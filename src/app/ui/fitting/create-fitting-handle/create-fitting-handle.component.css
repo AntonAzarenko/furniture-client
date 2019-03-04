@@ -1,0 +1,35 @@
+.input-type {
+  padding-right: 10px;
+  font-size: 12px;
+  height: 15px;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  padding-top: 50px;
+  padding-bottom: 40px;
+}
+.title {
+  font-size: 14px;
+}
+.input-type2 {
+  padding-right: 10px;
+  font-size: 12px;
+  height: 15px;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  padding-top: 70px;
+  padding-bottom: 20px;
+}
+
+.section {
+  font-size: 12px;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  height: 15px;
+}
+
+.margin {
+  margin: 0 10px;
+}

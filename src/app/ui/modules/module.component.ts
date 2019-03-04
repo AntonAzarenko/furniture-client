@@ -46,6 +46,7 @@ export class ModuleComponent implements OnInit {
   private moduleId: number;
   dataSource: Object[];
   public orderName: string;
+  private typeM = "FITTING";
 
 
   public searchTextM: string;
@@ -70,6 +71,12 @@ export class ModuleComponent implements OnInit {
     this.menu.ngOnInit();
     this.getAllModules();
   }
+  equals(type: string){
+    if(type == this.typeM){
+      return true;
+    }
+  }
+
 
   getAllModules() {
     this.setRouting();

@@ -1,0 +1,70 @@
+<mat-card class="window">
+  <div class="container">
+    <h6 class="title">Фурнитура к заказу {{orderName}}</h6>
+    <hr>
+  </div>
+  <div class="adding">
+    <div class="row">
+      <section class="section">
+        <label class="margin">Добавить:</label>
+        <mat-radio-group [(ngModel)]="fromAdd">
+          <mat-radio-button class="margin" value="catalog">Из каталога</mat-radio-button>
+          <mat-radio-button class="margin" value="new_element">Новый елемент</mat-radio-button>
+        </mat-radio-group>
+      </section>
+      <div class="input-type" *ngIf="checkFrom()">
+        <mat-form-field>
+          <mat-select placeholder="Выберите тип" [(ngModel)]="fittingType">
+            <mat-option value="handle">Ручки</mat-option>
+            <mat-option value="lopps">Петли</mat-option>
+            <mat-option value="lift">Направляющие</mat-option>
+            <mat-option value="order">Подьемные механизмы</mat-option>
+            <mat-option value="order">Другое</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="input-type" *ngIf="!checkFrom()">
+        <mat-form-field>
+          <mat-select placeholder="куда" [(ngModel)]="toAdd">
+            <mat-option value="catalog">В каталог и в заказ</mat-option>
+            <mat-option value="order">Только в этот заказ</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="input-type" *ngIf="checkTo() && !checkFrom()">
+        <mat-form-field>
+          <mat-select placeholder="Выберите тип" [(ngModel)]="fittingCreateType">
+            <mat-option value="handle">Ручки</mat-option>
+            <mat-option value="lopps">Петли</mat-option>
+            <mat-option value="lift">Направляющие</mat-option>
+            <mat-option value="order">Подьемные механизмы</mat-option>
+            <mat-option value="order">Другое</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="input-type" *ngIf="!checkTo()">
+        <mat-form-field class="input-type">
+          <input matInput type="text" [(ngModel)]="name" placeholder="Введите Имя" value="Имя" name="name"
+                 #username="ngModel" required="true"/>
+          <mat-error >Необходимо ввести имя</mat-error>
+        </mat-form-field>
+        <mat-form-field class="input-type">
+        <input matInput type="text" [(ngModel)]="name" placeholder="Введите количество" value="count" name="count"
+               #username="ngModel" required="true"/>
+        <mat-error >Необходимо ввести количество</mat-error>
+        </mat-form-field>
+        <mat-form-field class="input-type">
+        <input matInput type="text" [(ngModel)]="name" placeholder="Введите цену за единицу" value="price" name="price"
+               #username="ngModel" required="true"/>
+        <mat-error >Необходимо ввести цену</mat-error>
+        </mat-form-field>
+        <button mat-menu-item (click)="addToOrder()">Добавить</button>
+      </div>
+    </div>
+    <hr>
+  </div>
+  <app-create-fitting-handle *ngIf="checkCreateHandle()">
+
+  </app-create-fitting-handle>
+</mat-card>

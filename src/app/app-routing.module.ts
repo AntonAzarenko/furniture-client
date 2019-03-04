@@ -10,6 +10,8 @@ import {RegisterComponent} from "./ui/register/register.component";
 import {LogoutComponent} from "./ui/logout/logout.component";
 import {AboutComponent} from "./ui/about/about.component";
 import { UserProfileComponent } from './ui/user-profile/user-profile.component';
+import {CatalogsComponent} from "./ui/catalogs/catalogs.component";
+import {FittingComponent} from "./ui/fitting/fitting.component";
 
 const routes: Routes = [
   {path: '', redirectTo: '/greeting', pathMatch: 'full'},
@@ -25,7 +27,9 @@ const routes: Routes = [
   {path: 'login', component: GreetingComponent},
   {path: 'logout', component: LogoutComponent},
   {path: 'about', component: AboutComponent},
-  {path: 'user/profile', component: UserProfileComponent}
+  {path: 'user/profile', component: UserProfileComponent},
+  {path: 'catalogs', component: CatalogsComponent},
+  {path: 'fitting/:id', component: FittingComponent}
 
 ];
 

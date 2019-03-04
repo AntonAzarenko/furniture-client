@@ -1,0 +1,27 @@
+.window {
+  min-height: 87vh;;
+}
+.title {
+  text-align: center;
+}
+
+.section {
+  font-size: 12px;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  height: 15px;
+}
+
+.margin {
+  margin: 0 10px;
+}
+
+.input-type {
+  padding-right: 15px;
+  font-size: 12px;
+  height: 15px;
+  display: flex;
+  align-content: center;
+  align-items: center;
+}
