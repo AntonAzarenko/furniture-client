@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import { FittingService } from 'src/app/services/fitting/fitting.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-fitting',
@@ -12,10 +14,25 @@ export class FittingComponent implements OnInit {
   public fittingType;
   public fittingCreateType;
 
-  constructor() {
+  moduleFitting: Object[];
+
+  constructor(private service: FittingService,
+    public route: ActivatedRoute) {
   }
 
   ngOnInit() {
+    this.getAllFitting();
+  }
+
+  getAllFitting(){
+    const id = this.route.snapshot.params['id'];
+      this.service.getFittingsOfModule(id).subscribe(
+        (data:any[]) =>{
+          this.moduleFitting = data;
+          console.log(this.moduleFitting);          
+        }
+      )
+      this.fittingType = null;
   }
 
   checkFrom() {
@@ -25,7 +42,7 @@ export class FittingComponent implements OnInit {
       return true;
     }
     else {
-
+      this.fittingType = null;
       return false;
     }
   }
@@ -35,7 +52,7 @@ export class FittingComponent implements OnInit {
       return true;
     }
     this.fittingCreateType = null;
-
+    this.fittingType = null;
     return false;
   }
 
@@ -44,6 +61,38 @@ export class FittingComponent implements OnInit {
         return true;
       }
       else return false;
+  }
+
+  checkCreateLoops(){
+    if(this.fittingCreateType == "loops"){
+      return true;
+    }
+    else return false;
+  }
+
+  setToAdd(flag: string){
+      this.toAdd = flag;
+  }
+
+  setFromAdd(flag: string){
+    this.fromAdd = flag;
+  }
+
+  checkFittingTypeHandle(){
+    if(this.fittingType == "handle"){
+      return true;
+    } 
+     else {
+      return false;
+    }
+  }
+  checkFittingTypeLoop(){
+    if(this.fittingType == "loops"){
+      return true;
+    } 
+     else {
+      return false;
+    }
   }
 
 }

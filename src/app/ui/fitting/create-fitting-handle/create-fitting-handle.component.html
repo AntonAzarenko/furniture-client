@@ -8,6 +8,19 @@
              #username="ngModel" required="true"/>
       <mat-error>Необходимо ввести артикль</mat-error>
     </mat-form-field>
+
+    <mat-form-field class="input-type">
+        <mat-select placeholder="Выберите Страну" [(ngModel)]="country">
+          <mat-option value="AUSTRIA">Австрия</mat-option>
+          <mat-option value="GERMANY">Германия</mat-option>
+          <mat-option value="POLAND">Польша</mat-option>
+          <mat-option value="RUSSIA">Россия</mat-option>
+          <mat-option value="UKRAINE">Украина</mat-option>
+          <mat-option value="BELARUS">Беларусь</mat-option>
+          <mat-option value="CHINA">Китай</mat-option>
+        </mat-select>
+      </mat-form-field>
+
   </div>
   <div class="input-type">
     <section class="section">
@@ -34,28 +47,74 @@
       <mat-checkbox class="margin" [(ngModel)]="otherCenter">Другое</mat-checkbox>
     </section>
   </div>
-  <div class="input-type" *ngIf="otherCenter">
+
+  <div class="input-type" *ngIf="nintysix">
     <mat-form-field class="input-type">
-      <input matInput type="text" [(ngModel)]="betweenCenter" placeholder="Введите межосевой размер" value="color"
-             name="color"
+      <input matInput type="text" [(ngModel)]="priceNinetySix" placeholder="Введите цену на размер 96" value="priceNinetySix" name="priceNinetySix"
              #username="ngModel" required="true"/>
-      <mat-error>Необходимо ввести межосевой размер</mat-error>
+      <mat-error>Необходимо ввести цену</mat-error>
     </mat-form-field>
   </div>
-  <div class="input-type2">
-    <input id="inputGroupFile01" style="display: none"
-           type="file" (change)="onChangeFile($event)" name="file"
-           #fileInput>
-    <div>
-      <button (click)="fileInput.click()">Select File</button>
-      <button mat-menu-item (click)="onSubmit()">Добавить ручку</button>
-    </div>
+  <div class="input-type" *ngIf="oneHundredTwentyEight">
+    <mat-form-field class="input-type">
+      <input matInput type="text" [(ngModel)]="priceOneHundredTwentyEight" placeholder="Введите цену на размер 128" value="priceOneHundredTwentyEight" name="priceOneHundredTwentyEight"
+             #username="ngModel" required="true"/>
+      <mat-error>Необходимо ввести цену</mat-error>
+    </mat-form-field>
   </div>
+  <div class="input-type" *ngIf="oneHundrednintyTwo">
+    <mat-form-field class="input-type">
+      <input matInput type="text" [(ngModel)]="priceOneHundredNinetyTwo" placeholder="Введите цену на размер 192" value="priceOneHundredNinetyTwo" name="priceOneHundredNinetyTwo"
+             #username="ngModel" required="true"/>
+      <mat-error>Необходимо ввести цену</mat-error>
+    </mat-form-field>
+  </div>
+  <div class="input-type" *ngIf="twoHundredFivtySix">
+    <mat-form-field class="input-type">
+      <input matInput type="text" [(ngModel)]="priceTwoHundredFiftySix" placeholder="Введите цену на размер 256" value="priceTwoHundredFiftySix" name="priceTwoHundredFiftySix"
+             #username="ngModel" required="true"/>
+      <mat-error>Необходимо ввести цену</mat-error>
+    </mat-form-field>
+  </div>
+  <div class="input-type" *ngIf="otherCenter">
+    <mat-form-field class="input-type">
+      <input matInput type="text" [(ngModel)]="priceOtherCenter" placeholder="Введите цену на размер новый размер" value="priceOtherCenter" name="priceOtherCenter"
+             #username="ngModel" required="true"/>
+      <mat-error>Необходимо ввести цену</mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="input-type" *ngIf="otherCenter">
+    <mat-form-field class="input-type">
+      <input matInput type="number" [(ngModel)]="betweenCenter" placeholder="Введите размер" value="color"
+             name="color"
+             #username="ngModel" required="true"/>
+      <mat-error>Необходимо ввести меж-осевой размер</mat-error>
+    </mat-form-field>
+  </div>
+
+  <div *ngIf="currentFileUpload" class="progress">
+    <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" attr.aria-valuenow="{{progress.percentage}}"
+      aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width:progress.percentage+'%'}">
+      {{progress.percentage}}%</div>
+  </div>
+ 
+  <label class="btn btn-default">
+    <input type="file" (change)="selectFile($event)">
+  </label>
+ 
+  <!-- <button class="btn btn-success" [disabled]="!selectedFiles" (click)="upload()">Upload</button> -->
+
+<mat-action>
+  <div>
+      <button mat-menu-item (click)="addHandle()">Добавить ручку</button>
+      <button mat-menu-item (click)="abort()">Отмена</button>
+  </div> 
+   <mat-hint color="warn" *ngIf="isaddFailed" class="alert">
+  </mat-hint>
+  <mat-hint color="warn" *ngIf="addComplited" class="alert">
+    Ручка успешно добавлена
+  </mat-hint>
+</mat-action>
 </div>
 
-<script>
-  $('#inputGroupFile01').on('change', function () {
-    var fileName = $(this).val();
-    $(this).next('.custom-file-label').html(fileName);
-  });
-</script>

@@ -1,12 +1,7 @@
 .cont {
   min-height: 87vh;
-
-  background: url('../../../img/workArea.jpg');
-}
-
-.container {
-  min-height: 87vh;
   background: rgba(255, 255, 255, 0.6)
+
 }
 
 .head {

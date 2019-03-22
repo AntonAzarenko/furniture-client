@@ -24,10 +24,10 @@ import {HelpOfOrderComponent} from "../../helps/help-of-order/help-of-order.comp
 export class OrdersComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  dataSource: OrderEx[];
+  dataSource: Object[];
   userName: string;
   orderEx: OrderEx;
-  searchTextO: string;
+  public searchText: string;
 
   private id: number;
   private name: string;
@@ -38,7 +38,6 @@ export class OrdersComponent implements OnInit {
   dateOfCreate: string;
 
   displayedColumns: string [] = ['name', 'address', 'telNumber', 'customersName', 'dateOfCreate', 'dateOfContract'];
-
 
   constructor(private service: OrderService, private route: ActivatedRoute,
               public dialogC: MatDialog,
@@ -115,10 +114,10 @@ export class OrdersComponent implements OnInit {
 
   save(data) {
     this.service.save(data).subscribe((data:any) =>{
-       this.dataSource.push(data);
-      this.searchTextO = data;
+     this.dataSource.push(data);
+      this.searchText = 'Adding...';
       setTimeout(()=>{
-        this.searchTextO = "";
+        this.searchText = ''
       },2000)
     });
   }

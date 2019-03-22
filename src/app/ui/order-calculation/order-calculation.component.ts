@@ -21,6 +21,7 @@ export class OrderCalculationComponent implements OnInit {
   dataSource: Object[];
   displayedColumns: string [] = ['moduleName', 'moduleType', "dspM2", "dvpM2", "edgeM", "fittings", "facades", "total"];
 
+  totalCost: string;
   constructor(private service: OrderCalculationService,
               private route: ActivatedRoute) {
   }
@@ -34,5 +35,13 @@ export class OrderCalculationComponent implements OnInit {
     this.service.getCalculationOFOrder(id).subscribe((data: any[]) => {
       this.dataSource = data;
     })
+    this.getCalcTotal(id);
   }
+  
+  getCalcTotal(id : number){
+    this.service.getCalcTotal(id).subscribe((data:any) =>{
+      this.totalCost = data;
+    })
+  }
+
 }

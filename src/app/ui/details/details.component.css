@@ -1,3 +1,8 @@
+.cont {
+  min-height: 87vh;
+  background: rgba(255, 255, 255, 0.6)
+}
+
 table {
   width: 100%;
 }
@@ -16,18 +21,9 @@ table {
 }
 
 .form-inline {
- #margin-left: 200px;
+ margin-left: 200px;
 }
 
-.cont {
-  min-height: calc(100vh - 128px);
-  background: url('../../../img/workArea.jpg');
-}
-
-.container {
-  min-height: 87vh;
-  background: rgba(255, 255, 255, 0.6)
-}
 
 .navbar {
   margin-bottom: 10px;

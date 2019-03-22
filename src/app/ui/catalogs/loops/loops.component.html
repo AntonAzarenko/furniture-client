@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row">
+    <div class="input-type">
+        <mat-form-field>
+          <mat-select placeholder="" [(ngModel)]="handleId" [(value)]="handleId">
+            <mat-option  (click)="infoHandle()"  *ngFor="let handle of handles" [value]="handle.id">{{handle.article}}</mat-option>     
+          </mat-select>
+        </mat-form-field>
+    </div>
+  </div>
+    <div class="loopsList">
+      <table border="3"   class="table table-striped" >
+          <tr>
+            <td align="center">Производитель</td>
+            <td align="center">Тип</td>
+            <td align="center">Угол открывания</td>
+            <td align="center">Доводчик</td>
+            <td align="center">Цена $</td>
+            <td align="center">Кол-во</td>
+            <td align="center" width="40">Добавить</td>
+          </tr>
+          <tr *ngFor="let element of loopsList">
+              <td>{{element.manufactureName}}</td>
+              <td>{{element.typeLoop}}</td>
+              <td>{{elemnt.angle}}</td>
+              <td>{{elemnt.microLift}}</td>
+              <td>{{elemnt.price}}</td>
+              <td>
+                  <div class="input-type">
+                      <mat-form-field class="input-type">
+                        <input matInput type="text" [(ngModel)]="count" placeholder="Введите количество" value="count" name="count"
+                               #username="ngModel" required="true"/>
+                        <mat-error>Необходимо ввести количество</mat-error>
+                      </mat-form-field>
+                    </div>
+              </td>
+              <td> 
+                <button mat-button (click)="openDialogCreateDetail($event)">
+                  <mat-icon style="color: #bf0008">create</mat-icon>
+                </button>
+              </td>
+          </tr>
+      </table>
+    </div>
+      
+</div>

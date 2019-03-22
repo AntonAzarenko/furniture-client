@@ -73,6 +73,9 @@ import {UserProfileComponent} from './user-profile/user-profile.component';
 import {CatalogsComponent} from './catalogs/catalogs.component';
 import {FittingComponent} from './fitting/fitting.component';
 import { CreateFittingHandleComponent } from './fitting/create-fitting-handle/create-fitting-handle.component';
+import { HandleComponent } from './catalogs/handle/handle.component';
+import { LoopsComponent } from './catalogs/loops/loops.component';
+import { CreateFittingLoopsComponent } from './fitting/create-fitting-loops/create-fitting-loops.component';
 
 
 @NgModule({
@@ -104,6 +107,9 @@ import { CreateFittingHandleComponent } from './fitting/create-fitting-handle/cr
     CatalogsComponent,
     FittingComponent,
     CreateFittingHandleComponent,
+    HandleComponent,
+    LoopsComponent,
+    CreateFittingLoopsComponent,
 
 
   ],

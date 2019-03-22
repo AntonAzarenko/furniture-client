@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="row">
+      <div class="input-type">
+        <mat-form-field>
+          <mat-select placeholder="Выберите по артикулю" [(ngModel)]="handleId" [(value)]="handleId">
+            <mat-option  (click)="infoHandle()"  *ngFor="let handle of handles" [value]="handle.id">{{handle.article}}</mat-option>     
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="input-type">
+        <mat-form-field *ngIf="isShowColors">
+          <mat-select placeholder="Цвет" [(ngModel)]="handleCol" [(value)]="handleCol">
+            <mat-option (click)="infoHandleParams()" *ngFor="let color of colors" [value]="color.id" >{{color.color}}</mat-option>     
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="input-type">
+        <mat-form-field *ngIf="isShowCenDist">
+          <mat-select placeholder="Межосевое расстояние" [(ngModel)]="handleCD" [(value)]="handleCD">
+            <mat-option (click)="addCentDist()" *ngFor="let centDist of handleParam" [value]="centDist.id" >{{centDist.centerDistance}}</mat-option>     
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="input-type" *ngIf="isShowCenDist">
+          <mat-form-field class="input-type">
+            <input matInput type="text" [(ngModel)]="count" placeholder="Введите количество" value="count" name="count"
+                   #username="ngModel" required="true"/>
+            <mat-error>Необходимо ввести количество</mat-error>
+          </mat-form-field>
+        </div>
+
+      <div class="input-type">
+          <div *ngIf="isShowButtonAdd">
+            <button (click)="addToOrder()">Добавить</button>
+          </div>
+      </div>
+  </div>
+</div> 
+

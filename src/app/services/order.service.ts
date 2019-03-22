@@ -5,7 +5,9 @@ import {Prop} from "../properties";
 import {environment} from "../../environments/environment";
 
 const httpOptions = {
-  headers: new HttpHeaders({'Content-Type': 'application/json'})
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Headers': 'json'})
 };
 
 @Injectable({

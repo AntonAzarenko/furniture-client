@@ -1,0 +1,13 @@
+.input-type{
+    padding-top: 10px;
+    padding-right: 15px;
+    font-size: 12px;
+    height: 15px;
+    display: flex;
+    align-content: center;
+    align-items: center;
+  }
+
+  .loopsList{
+    margin-top: 20px;
+  }

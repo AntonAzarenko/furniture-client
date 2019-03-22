@@ -9,12 +9,16 @@ import {environment} from "../../environments/environment";
 export class OrderCalculationService {
 
 
-  private getUrl = environment.URI + '/furniture/booker/';
+  private URL = environment.URI + '/furniture/booker/';
 
   constructor(private http: HttpClient) {
   }
 
   getCalculationOFOrder(id: number) {
-    return this.http.get(this.getUrl + id);
+    return this.http.get(this.URL  + id);
+  }
+
+  getCalcTotal(id: number){
+    return this.http.get(this.URL + "total/" + id);
   }
 }

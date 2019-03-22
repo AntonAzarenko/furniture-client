@@ -16,17 +16,17 @@
         <mat-form-field>
           <mat-select placeholder="Выберите тип" [(ngModel)]="fittingType">
             <mat-option value="handle">Ручки</mat-option>
-            <mat-option value="lopps">Петли</mat-option>
+            <mat-option value="loops">Петли</mat-option>
             <mat-option value="lift">Направляющие</mat-option>
             <mat-option value="order">Подьемные механизмы</mat-option>
-            <mat-option value="order">Другое</mat-option>
+            <mat-option value="other">Другое</mat-option>
           </mat-select>
         </mat-form-field>
       </div>
       <div class="input-type" *ngIf="!checkFrom()">
         <mat-form-field>
           <mat-select placeholder="куда" [(ngModel)]="toAdd">
-            <mat-option value="catalog">В каталог и в заказ</mat-option>
+            <mat-option value="catalog">Только в  каталог </mat-option>
             <mat-option value="order">Только в этот заказ</mat-option>
           </mat-select>
         </mat-form-field>
@@ -35,7 +35,7 @@
         <mat-form-field>
           <mat-select placeholder="Выберите тип" [(ngModel)]="fittingCreateType">
             <mat-option value="handle">Ручки</mat-option>
-            <mat-option value="lopps">Петли</mat-option>
+            <mat-option value="loops">Петли</mat-option>
             <mat-option value="lift">Направляющие</mat-option>
             <mat-option value="order">Подьемные механизмы</mat-option>
             <mat-option value="order">Другое</mat-option>
@@ -64,7 +64,50 @@
     </div>
     <hr>
   </div>
-  <app-create-fitting-handle *ngIf="checkCreateHandle()">
-
-  </app-create-fitting-handle>
+  <app-handle *ngIf="checkFittingTypeHandle()"></app-handle>
+  <app-loops *ngIf="checkFittingTypeLoop()"></app-loops>
+  <app-create-fitting-handle *ngIf="checkCreateHandle()"></app-create-fitting-handle>
+  <app-create-fitting-loops *ngIf="checkCreateLoops()"></app-create-fitting-loops>
+  <hr>
+  
+  <table border="3"   class="table table-striped" >
+       <tr>
+          <td align="center">Наименование</td>
+          <td align="center">Артикул</td>
+          <td align="center">Размер</td>
+          <td align="center">Цвет</td>
+          <td align="center">Угол</td>
+          <td align="center">Тип</td>
+          <td align="center">Доводчик</td>
+          <td align="center">Кол-во</td>
+          <td align="center">Страна производителя</td>
+          <td align="center">Бренд</td>
+          <td align="center">Цена/$</td>
+          <td align="center" width="40">Редактировать</td>
+          <td align="center" width="50">Удалить</td>
+      </tr>
+      <tr *ngFor="let element of moduleFitting">
+          <th  align="justify">{{element.type}}</th>
+          <th>{{element.article}}</th>
+          <th>{{element.size}}</th>
+          <th>{{element.color}}</th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th>{{element.count}}</th>
+          <th>{{element.country}}</th>
+          <th></th>
+          <th>{{element.price}}</th>
+          <th>
+            <button mat-button (click)="openDialogCreateDetail($event)">
+              <mat-icon style="color: #bf0008">create</mat-icon>
+            </button>
+          </th>
+          <th>
+            <button mat-button (click)="openDialogCreateDetail($event)">
+              <mat-icon style="color: #bf0008">delete_sweep</mat-icon>
+            </button>
+          </th>
+      </tr>
+  </table>
 </mat-card>

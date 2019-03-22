@@ -1,5 +1,5 @@
 <div class="cont">
-  <div class="container">
+  <div>
     <div class="head">
       <h7>Заказы</h7>
     </div>
@@ -11,7 +11,7 @@
       </div>
       <div class="col-sm-4">
         <form class="form-inline mr-sm-2">
-          <input class="form-control  my-2 my-sm-0" [(ngModel)]="searchTextO" placeholder="Search..." name="Search">
+          <input class="form-control  my-2 my-sm-0" [(ngModel)]="searchText" placeholder="Search..." name="searchText">
         </form>
       </div>
     </div>
@@ -19,8 +19,8 @@
 
     <div class="table-containers mat-elevation-z8">
 
-      <table mat-table  #table [dataSource]="dataSource | grdFilterOrder: {name: searchTextO, address: searchTextO, telNumber: searchTextO,
-        customersName: searchTextO, dateOfCreate: searchTextO, dateOfContract: searchTextO}" multiTemplateDataRows class="mat-elevation-z8"
+      <table mat-table  #table [dataSource]="dataSource | grdFilter: {name: searchText, address: searchText, telNumber: searchText,
+        customersName: searchText, dateOfCreate: searchText, dateOfContract: searchText}" multiTemplateDataRows class="mat-elevation-z8"
              matSort matSortActive="created" matSortDisableClear matSortDirection="asc">
 
         <ng-container matColumnDef="expandedDetail">

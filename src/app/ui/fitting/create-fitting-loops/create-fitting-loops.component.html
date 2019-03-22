@@ -1,0 +1,98 @@
+<div class="container">
+  <div class="title">
+    <span>Добавьте параметры</span>
+  </div>
+
+  <div class="row">
+    <mat-form-field class="input-type">
+      <mat-select placeholder="Выберите производителя" [(ngModel)]="manufacturerName">
+        <mat-option value="BLUM">BLUM</mat-option>
+        <mat-option value="Hettich">Hettich</mat-option>
+        <mat-option value="GTV">GTV</mat-option>
+        <mat-option value="Grass">Grass</mat-option>
+        <mat-option value="noname">noname</mat-option>
+        <mat-option value="other">other</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="input-type">
+      <mat-select placeholder="Выберите страну" [(ngModel)]="country">
+        <mat-option value="AUSTRIA">Австрия</mat-option>
+        <mat-option value="GERMANY">Германия</mat-option>
+        <mat-option value="POLAND">Польша</mat-option>
+        <mat-option value="RUSSIA">Россия</mat-option>
+        <mat-option value="UKRAINE">Украина</mat-option>
+        <mat-option value="BELARUS">Беларусь</mat-option>
+        <mat-option value="CHINA">Китай</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="input-type">
+      <mat-select placeholder="Выберите тип петли" [(ngModel)]="type">
+        <mat-option value="OVERHEAD">Накладная</mat-option>
+        <mat-option value="HALF_OVERHEAD">Полунакладная</mat-option>
+        <mat-option value="INNER">Внутренняя</mat-option>
+      </mat-select>
+    </mat-form-field>
+     
+      <label class="btn btn-default" class="input-type">
+        <input type="file" (change)="selectFile($event)">
+      </label>
+  </div>
+
+  <div *ngIf="currentFileUpload" class="progress">
+      <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" attr.aria-valuenow="{{progress.percentage}}"
+        aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width:progress.percentage+'%'}">
+        {{progress.percentage}}%
+      </div>
+  </div>
+
+  <table border="3"   class="table table-striped" >
+    <tr>
+       <td  align="center">Угол</td>
+       <td align="center" >Доводчик</td>
+       <td align="center">Цена</td>
+       <td  align="center">Добавить петлю</td>
+   </tr>
+   <tr>
+      <td>
+         <mat-form-field class="input-type">
+           <mat-select placeholder="Выберите угол" [(ngModel)]="angle">
+                  <mat-option value="30">угол 30</mat-option>
+                  <mat-option value="35">угол 35</mat-option>
+                  <mat-option value="45">угол 45</mat-option>
+                  <mat-option value="90">угол 90</mat-option>
+                  <mat-option value="110">угол 110</mat-option>
+                  <mat-option value="120">угол 120</mat-option>
+                  <mat-option value="135">угол 135</mat-option>
+                  <mat-option value="180">угол 180</mat-option>
+                </mat-select>
+            </mat-form-field>
+      </td>
+      <td>
+          <mat-form-field class="input-type">
+              <mat-select placeholder="Наличие доводчика" [(ngModel)]="microLift" [value]="microLift">
+                <mat-option value="true">Есть</mat-option>
+                <mat-option value="false">Нету</mat-option>
+              </mat-select>
+            </mat-form-field>
+      </td>
+      <td>
+          <div class="input-type" >
+              <mat-form-field class="input-type">
+                <input matInput type="text" [(ngModel)]="price" placeholder="Введите цену" value="price" name="price"
+                       #username="ngModel" required="true"/>
+                <mat-error>Необходимо ввести цену</mat-error>
+              </mat-form-field>
+              </div>
+      </td>
+      <td  align="center"><button class="icon" mat-button (click)="addLoops()">
+          <mat-icon style="color: #bf0008">create</mat-icon>
+        </button>
+      </td>
+   </tr>
+  </table>
+</div>
+
+
+
