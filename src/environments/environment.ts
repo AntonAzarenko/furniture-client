@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  URI:  'http://localhost:8080'
+  URI:  'https://back-end-furniture.herokuapp.com'
 
 };
 
