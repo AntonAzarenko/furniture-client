@@ -13,13 +13,14 @@ export class FittingComponent implements OnInit {
   public toAdd = null;
   public fittingType;
   public fittingCreateType;
+  public orderName;
 
   moduleFitting: Object[];
 
   constructor(private service: FittingService,
     public route: ActivatedRoute) {
   }
-
+S
   ngOnInit() {
     this.getAllFitting();
   }

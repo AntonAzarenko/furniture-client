@@ -349,6 +349,8 @@ MIT
 
 @angular/material/icon
 
+@angular/material/menu
+
 @ng-bootstrap/ng-bootstrap
 MIT
 The MIT License (MIT)

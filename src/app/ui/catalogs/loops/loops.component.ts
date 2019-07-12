@@ -9,6 +9,8 @@ import { LoopsService } from 'src/app/services/fitting/loops.service';
 export class LoopsComponent implements OnInit {
 
   public loopsList: Object[];
+  handleId: string;
+  handles: object[];
 
   constructor(private loopService: LoopsService) { }
 
@@ -23,5 +25,6 @@ export class LoopsComponent implements OnInit {
           console.log(this.loopsList);
     });
   }
+  
 
 }
