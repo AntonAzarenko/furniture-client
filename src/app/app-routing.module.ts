@@ -12,6 +12,7 @@ import {AboutComponent} from "./ui/about/about.component";
 import { UserProfileComponent } from './ui/user-profile/user-profile.component';
 import {CatalogsComponent} from "./ui/catalogs/catalogs.component";
 import {FittingComponent} from "./ui/fitting/fitting.component";
+import { HomeComponent } from './ui/home/home.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/greeting', pathMatch: 'full'},
@@ -20,7 +21,7 @@ const routes: Routes = [
   {path: 'details', component: DetailsComponent},
   {path: 'modules/get/:id', component: ModuleComponent},
   {path: 'modules/:id/details', component: DetailsComponent},
-  {path: 'orders/order/:name/modules/:id', component : ModuleComponent},
+  {path: 'home/order/:name/modules/:id', component : ModuleComponent},
   {path: 'orders', component: OrdersComponent},
   {path: 'order-calculation/:id', component:  OrderCalculationComponent},
   {path: 'signup', component: RegisterComponent },
@@ -29,7 +30,8 @@ const routes: Routes = [
   {path: 'about', component: AboutComponent},
   {path: 'user/profile', component: UserProfileComponent},
   {path: 'catalogs', component: CatalogsComponent},
-  {path: 'fitting/:id', component: FittingComponent}
+  {path: 'fitting/:id', component: FittingComponent},
+  {path: 'home', component: HomeComponent}
 
 ];
 

@@ -17,13 +17,6 @@
   padding-top: 50px;
 }
 
-.left {
-  background-color: white;
-  background: rgba(255,255,255,0.6);
-  font-weight: 600;
-  border-radius: 4px;
-}
-
 .right {
   font-weight: 600;
   background-color: #182134;

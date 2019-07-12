@@ -76,6 +76,8 @@ import { CreateFittingHandleComponent } from './fitting/create-fitting-handle/cr
 import { HandleComponent } from './catalogs/handle/handle.component';
 import { LoopsComponent } from './catalogs/loops/loops.component';
 import { CreateFittingLoopsComponent } from './fitting/create-fitting-loops/create-fitting-loops.component';
+import { HomeComponent } from './home/home.component';
+import { MealComponent } from './meal/meal.component';
 
 
 @NgModule({
@@ -110,6 +112,8 @@ import { CreateFittingLoopsComponent } from './fitting/create-fitting-loops/crea
     HandleComponent,
     LoopsComponent,
     CreateFittingLoopsComponent,
+    HomeComponent,
+    MealComponent,
 
 
   ],

@@ -46,8 +46,8 @@ export class GreetingComponent implements OnInit {
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getAuthorities();
-        this.router.navigate(['/orders']);
-        this.reloadPage();
+        this.router.navigateByUrl('/home');
+        //this.reloadPage();
       },
       error => {
         console.log(error);
